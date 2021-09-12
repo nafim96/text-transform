@@ -1,24 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import About from "./components/About/About";
+import Alert from "./components/Alert/Alert";
+import Navbar from "./components/Navbar/Navbar";
+import TextForm from "./components/TextForm/TextForm";
+function App ()
+{
+  "use strict";
+  const [ mode, setMode ] = useState( "light" )
+  const [ btnText, setBtnText ] = useState( "Dark Mode" )
+  const [ alert, setAlert ] = useState( null )
+  const handleDarkMode = () =>
+  {
+    if ( mode === "light" )
+    {
+      setMode( "dark" )
+      setBtnText( "Light Mode" )
+      document.body.style.backgroundColor = 'black';
+      document.body.style.color = 'white';
+      showAlert( "Dark Mode is Enable", "success" )
 
-function App() {
+    } else
+    {
+      setMode( "light" )
+      setBtnText( "Dark Mode" )
+      document.body.style.backgroundColor = 'white';
+      document.body.style.color = 'black';
+      showAlert( "Light Mode is Enable", "success" )
+
+    }
+  }
+
+  const showAlert = ( message, type ) =>
+  {
+    setAlert( {
+      msg: message,
+      type: type,
+    } )
+    setTimeout( () =>
+    {
+      setAlert( null )
+    }, 2000 );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <>
+      <Navbar home="Text Utils" mode={ mode } enableDark={ handleDarkMode } btnText={ btnText } />
+      <Alert alert={ alert } mode={ mode } />
+      <About />
+      <TextForm showAlert={ showAlert } mode={ mode } />
+    </>
   );
 }
 
