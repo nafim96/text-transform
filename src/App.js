@@ -18,6 +18,16 @@ function App ()
       document.body.style.backgroundColor = 'black';
       document.body.style.color = 'white';
       showAlert( "Dark Mode is Enable", "success" )
+      document.title = "TextUtils - Dark Mode"
+
+      // setInterval( () =>
+      // {
+      //   document.title = "TextUtils - Dark Mode"
+      // }, 2000 );
+      // setInterval( () =>
+      // {
+      //   document.title = "Install - TextUtils"
+      // }, 1500 );
 
     } else
     {
@@ -26,6 +36,7 @@ function App ()
       document.body.style.backgroundColor = 'white';
       document.body.style.color = 'black';
       showAlert( "Light Mode is Enable", "success" )
+      document.title = "TextUtils - Light Mode"
 
     }
   }
@@ -47,7 +58,7 @@ function App ()
     <>
       <Navbar home="Text Utils" mode={ mode } enableDark={ handleDarkMode } btnText={ btnText } />
       <Alert alert={ alert } mode={ mode } />
-      <About />
+      <About mode={ mode } />
       <TextForm showAlert={ showAlert } mode={ mode } />
     </>
   );

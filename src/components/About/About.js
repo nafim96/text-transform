@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const About = () =>
+const About = ( { mode } ) =>
 {
     const [ myStyle, setMyStyle ] = useState( {
         color: "black",
@@ -68,7 +68,7 @@ const About = () =>
                 </div>
             </div>
             <div className="container my-3">
-                <button type="button" className="btn btn-primary" onClick={ handleDarkMode }>{ btnText }</button>
+                <button type="button" className={ `btn btn-primary bg-${ mode === "light" ? "dark" : "danger" }` } onClick={ handleDarkMode }>{ btnText }</button>
             </div>
         </div>
     );

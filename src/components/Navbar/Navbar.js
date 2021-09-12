@@ -29,7 +29,7 @@ const Navbar = ( props ) =>
                         </form> */}
                     </div>
                     <div className={ `form-check form-switch text-${ mode === "light" ? "dark" : "light" }` }>
-                        <input className="form-check-input" type="checkbox" id="switch-box" onClick={ enableDark } />
+                        <input className={ `form-check-input bg-${ mode === "light" ? "dark" : "light" }` } type="checkbox" id="switch-box" onClick={ enableDark } />
                         <label htmlFor="switch-box">{ btnText }</label>
                     </div>
                 </div>

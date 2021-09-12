@@ -26,10 +26,19 @@ const TextForm = ( { mode, showAlert } ) =>
 
     const handleCopy = () =>
     {
+
         const text = document.getElementById( "area" )
-        text.select()
-        navigator.clipboard.writeText( text.value )
-        showAlert( "Data Copped", "success" )
+        if ( text.value === "" || text.value === " " )
+        {
+            showAlert( "You don't type any data!!", "Warning" )
+        } else
+        {
+            text.select()
+            navigator.clipboard.writeText( text.value )
+            showAlert( "Data Copped", "success" )
+
+        }
+
     }
 
     const handleOnChange = ( event ) =>
@@ -57,7 +66,7 @@ const TextForm = ( { mode, showAlert } ) =>
                 <button className="btn btn-success mx-3" onClick={ handleExtraSpace }>Remove Space</button>
             </div>
             <div className="container">
-                <h2> <button className="btn-info">{ text.split( " " ).length }</button> word type <button className="btn-info">{ text.length }</button> character type</h2>
+                <h2> <button className="btn-info">{ text === "" ? 0 : text.split( " " ).length }</button> word type <button className="btn-info">{ text.length }</button> character type</h2>
                 <h3> <button className="btn-warning">{ 0.008 * text.split( " " ).length }</button> read minutes</h3>
                 <h2>Preview</h2>
                 <p>{ text.length > 0 ? text : "Please type text & see Preview" }</p>
