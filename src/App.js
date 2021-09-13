@@ -29,11 +29,11 @@ function App ()
       // setInterval( () =>
       // {
       //   document.title = "TextUtils - Dark Mode"
-      // }, 2000 );
+      // }, 3000 );
       // setInterval( () =>
       // {
       //   document.title = "Install - TextUtils"
-      // }, 1500 );
+      // }, 2500 );
 
     } else
     {
