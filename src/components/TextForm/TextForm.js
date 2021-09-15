@@ -26,17 +26,11 @@ const TextForm = ( { mode, showAlert } ) =>
 
     const handleCopy = () =>
     {
-        const text = document.getElementById( "area" )
-        if ( text.value === "" || text.value === " " )
-        {
-            showAlert( "You don't type any data!!", "Warning" )
-        } else
-        {
-            text.select()
-            navigator.clipboard.writeText( text.value )
-            document.getSelection().removeAllRanges();
-            showAlert( "Data Copped", "success" )
-        }
+
+        navigator.clipboard.writeText( text )
+        document.getSelection().removeAllRanges();
+        showAlert( "Data Copped", "success" )
+
     }
 
     const handleOnChange = ( event ) =>
@@ -74,7 +68,7 @@ const TextForm = ( { mode, showAlert } ) =>
                 <button style={ { backgroundColor: myStyle.buttonBgColor, color: myStyle.buttonColor } } disabled={ text.length === 0 } className="btn btn-success mx-3 my-2" onClick={ handleExtraSpace }>Remove Space</button>
             </div>
             <div style={ { color: myStyle.color } } className="container">
-                <h2> <button style={ { background: mode === "info" ? myStyle.buttonBgColor : " " } } className="btn-info">{ text.split( " " ).filter( element => element.length !== 0 ).length }</button> word type <button style={ { background: mode === "info" ? myStyle.buttonBgColor : " " } } className="btn-info">{ text.value === "" ? 0 : text.length }</button> character type</h2>
+                <h2> <button style={ { background: mode === "info" ? myStyle.buttonBgColor : " " } } className="btn-info">{ text.split( /\s+/ ).filter( element => element.length !== 0 ).length }</button> word type <button style={ { background: mode === "info" ? myStyle.buttonBgColor : " " } } className="btn-info">{ text.value === "" ? 0 : text.length }</button> character type</h2>
                 <h3> <button style={ { background: mode === "warning" ? "#0dcaf0" : " " } } className="btn-warning">{ 0.008 * text.split( " " ).filter( element => element.length !== 0 ).length }</button> read minutes</h3>
                 <h2>Preview</h2>
                 <p>{ text.length > 0 ? text : "Nothing to preview" }</p>
